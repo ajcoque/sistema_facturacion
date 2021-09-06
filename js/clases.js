@@ -104,3 +104,34 @@ class Televisor extends Electrodomestico{
 
 }
 
+class Nevera extends Electrodomestico{
+    
+    capacidad=0;
+    precioFinal=0;
+
+    constructor (consumo, procedencia, capacidad) {
+        super(consumo, procedencia);
+        this.capacidad = capacidad;
+        this.precioFinal = this.calcularPrecioFinal();
+    }
+
+    set capacidad(capacidad){
+        this.capacidad = capacidad;
+    }
+
+    get capacidad(){
+        return this.capacidad;
+    }
+
+    calcularPrecioFinal(){
+        this.precioFinal = super.calcularPrecioBase(super.consumo, super.procedencia);
+        if(this.capacidad>120){
+            let litrosAdicionales = this.capacidad-120;
+            if(litrosAdicionales=>10){
+                this.precioFinal += parseInt(litrosAdicionales/10)*(this.precioFinal*0.5);
+            }
+        }
+        return this.precioFinal;
+    }
+
+}
