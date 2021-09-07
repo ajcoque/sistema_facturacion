@@ -196,3 +196,11 @@ class Inventario{
         return [...this.televisores, ...this.neveras, ...this.electrodomesticosComunes];
     }
 }
+
+class Facturacion{
+    compras = [];
+
+    agregarCompras(elemento){
+        this.compras.push(elemento);
+    }
+}
