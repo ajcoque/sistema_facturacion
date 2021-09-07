@@ -81,13 +81,43 @@ function ingresarTelevisor() {
     let cantidad = document.getElementById("cantidadTelevisores").value;
 
     let televisor = null;
-    televisor = new Televisor(seleccionConsumo, seleccionProcedencia, tamanoPantalla, seleccionSincronizador); 
 
     for(let i=0; i < cantidad; i++){
         televisor = new Televisor(seleccionConsumo, seleccionProcedencia, tamanoPantalla, seleccionSincronizador);
         inventario.agregarAlInventario("Televisor",televisor);
     }
     
+    console.log(inventario.inventario);
+}
+
+function ingresarComun() {
+
+    let seleccionConsumo = document.getElementById("comboConsumo").value;
+    let seleccionProcedencia = document.getElementById("comboProcedencia").value;
+    let cantidad = document.getElementById("cantidadComunes").value;
+
+    let comun = null;
+
+    for(let i=0; i < cantidad; i++){
+        comun = new Electrodomestico(seleccionConsumo, seleccionProcedencia); 
+        inventario.agregarAlInventario("Comun",comun);
+    }
+    console.log(inventario.inventario);
+}
+
+function ingresarNevera() {
+
+    let seleccionConsumo = document.getElementById("comboConsumo").value;
+    let seleccionProcedencia = document.getElementById("comboProcedencia").value;
+    let capacidad = document.getElementById("capacidad").value;
+    let cantidad = document.getElementById("cantidadNeveras").value;
+
+    let nevera = null;
+
+    for(let i=0; i < cantidad; i++){
+        nevera = new Nevera(seleccionConsumo, seleccionProcedencia, capacidad); 
+        inventario.agregarAlInventario("Nevera",nevera);
+    }
     console.log(inventario.inventario);
 }
 
@@ -122,18 +152,21 @@ function guardarItem() {
 
     switch (seleccionElectrodomestico) {
         case "Comun":
+            ingresarComun();
             document.getElementById("formularioComun").classList.remove('mostrar');
             document.getElementById("formularioComun").classList.add('ocultar');
             break;
     
         case "Televisor":
             ingresarTelevisor();
-            realizarCompra("A","Internacional");
+            //realizarCompra("A","Internacional");
+            //mostrarInventario();
             document.getElementById("formularioTelevisor").classList.remove('mostrar');
             document.getElementById("formularioTelevisor").classList.add('ocultar');
             break;
 
         case "Nevera":
+            ingresarNevera();
             document.getElementById("formularioNevera").classList.remove('mostrar');
             document.getElementById("formularioNevera").classList.add('ocultar');
             break;
@@ -142,5 +175,38 @@ function guardarItem() {
 }
 
 function realizarCompra(filtro1, filtro2) {
-    console.log(inventario.verificarStock(filtro1, filtro2));
+    console.log(inventario.verificarStockTelevisores(filtro1, filtro2));
 }
+
+
+function mostrarInventario() {
+
+    var body = document.getElementsByTagName("body")[0];
+  
+    var tabla   = document.createElement("table");
+    var tblBody = document.createElement("tbody");
+  
+    for (var i = 0; i < inventario.inventario.length; i++) {
+
+      var hilera = document.createElement("tr");
+  
+      for (var j = 0; j < 8; j++) {
+
+        var celda = document.createElement("td");
+        var textoCelda = document.createTextNode("c"+i+","+j);
+        if(j==0 ){
+            textoCelda = document.createTextNode(inventario.inventario[0]);
+        }
+        celda.appendChild(textoCelda);
+        hilera.appendChild(celda);
+      }
+  
+      tblBody.appendChild(hilera);
+    }
+  
+    tabla.appendChild(tblBody);
+    body.appendChild(tabla);
+    tabla.setAttribute("border", "2");
+  }
+
+  
