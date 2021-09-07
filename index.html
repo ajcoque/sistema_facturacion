@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" 
+        rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" 
+        crossorigin="anonymous">
+    <link href="css/estilos.css" rel="stylesheet" type="text/css">
+    <title>Sistema de Facturación</title>
+
+</head>
+
+<body>
+    <header></header>
+    <h1>Sistema de Facturación</h1>
+
+    <section>
+        <label>Agregar producto</label>
+        <select id="menuElectrodomestico" >
+            <option selected="selected">Comun</option>
+            <option>Televisor</option>              
+            <option>Nevera</option>
+        </select>
+        <button id="btnAgregarItem" onclick="agregarItem()">Agregar</button>
+    </section>
+
+    </table>
+    
+    <section>
+        <table class="ocultar" id="formularioComun">
+            <thead>
+                <th>Producto</th>
+                <th>Consumo</th>
+                <th>Procedencia</th>
+                <th>Precio Unitario</th>
+                <th>Total</th>
+            </thead>
+            <tr>
+                <td id="td1"><select id="comboElectrodomestico" name="electrodomestico" disabled>
+                    <option selected="selected">Comun</option>
+                    <option>Televisor</option>              
+                    <option>Nevera</option>
+                </select></td>
+                <td id="td2"><select id="comboConsumo" name="consumo">
+                    <option>A</option>              
+                    <option>B</option>
+                    <option>C</option>
+                </select></td>
+                <td id="td3"><select id="comboProcedencia" name="procedencia" required>
+                    <option>Nacional</option>              
+                    <option>Internacional</option>
+                </select></td>
+                <td id="td6"><input id="cantidadComunes" type="number" name="cantidad" required></td>
+                <td id="td7"><input id="precioUnitario" type="number" name="precioUnitario" readonly></td>
+                <td id="td8" class="subtotal">0.00</td>
+            </tr>
+            <tr>
+                <td class='text' colspan="5"><span class="bold">Total</span></td>
+                <td class='text'><div class="total bold">0.00</div></td>
+            </tr>
+            <tr><td colspan="6"><button type="submit" onclick="guardarItem()">Guardar</button></td></tr>
+        </table>
+
+        <table class="ocultar" id="formularioTelevisor">
+            <thead>
+                <th>Producto</th>
+                <th>Consumo</th>
+                <th>Procedencia</th>
+                <th>Sincronizador TDT</th>
+                <th>Tamaño Pantalla</th>
+                <th>Cantidad</th>
+                <th>Precio Unitario</th>
+                <th>Total</th>
+            </thead>
+            <tr>
+                <td id="td1"><select id="comboElectrodomestico" name="electrodomestico" disabled>
+                    <option>Comun</option>
+                    <option selected="selected">Televisor</option>              
+                    <option>Nevera</option>
+                </select></td>
+                <td id="td2"><select id="comboConsumo" name="consumo" required>
+                    <option>A</option>              
+                    <option>B</option>
+                    <option>C</option>
+                </select></td>
+                <td id="td3"><select id="comboProcedencia" name="procedencia" required>
+                    <option>Nacional</option>              
+                    <option>Internacional</option>
+                </select></td>
+                <td id="td4"><select id="comboSincronizador" name="sincronizadorTDT">
+                    <option value="true">Si</option>              
+                    <option value="false">No</option>
+                </select></td>
+                <td id="td5"><input id="tamanoPantalla" type="text" name="tamanoPantalla" required></td>
+                <td id="td6"><input  id="cantidadTelevisores" type="number" name="cantidad"></td>
+                <td id="td7"><input id="precioUnitario" type="number" name="precioUnitario" readonly></td>
+                <td id="td8" class="subtotal">0.00</td>
+            </tr>
+            <tr>
+                <td class='text' colspan="7"><span class="bold">Total</span></td>
+                <td class='text'><div class="total bold">0.00</div></td>
+            </tr>
+            <tr><td colspan="8"><button onclick="guardarItem()">Guardar</button></td></tr>
+        </table>
+
+        <table class="ocultar" id="formularioNevera">
+            <thead>
+                <th>Producto</th>
+                <th>Consumo</th>
+                <th>Procedencia</th>
+                <th>Capacidad</th>
+                <th>Cantidad</th>
+                <th>Precio Unitario</th>
+                <th>Total</th>
+            </thead>
+            <tr>
+                <td id="td1"><select id="comboElectrodomestico" name="electrodomestico" disabled>
+                    <option>Comun</option>
+                    <option>Televisor</option>              
+                    <option selected="selected" >Nevera</option>
+                </select></td>
+                <td id="td2"><select id="comboConsumo" name="consumo">
+                    <option>A</option>              
+                    <option>B</option>
+                    <option>C</option>
+                </select></td>
+                <td id="td3"><select id="comboProcedencia" name="procedencia">
+                    <option>Nacional</option>              
+                    <option>Internacional</option>
+                </select></td>
+                <td id="td5"><input id="capacidad" type="text" name="capacidad" required></td>
+                <td id="td6"><input type="number" name="cantidad" required></td>
+                <td id="td7"><input id="precioUnitario" type="number" name="precioUnitario" readonly></td>
+                <td id="td8" class="subtotal">0.00</td>
+            </tr>
+            <tr>
+                <td class='text' colspan="6"><span class="bold">Total</span></td>
+                <td class='text'><div class="total bold">0.00</div></td>
+            </tr>
+            <tr><td colspan="7"><button onclick="guardarItem()">Guardar</button></td></tr>
+        </table>
+       
+    </section>
+    <footer></footer>
+
+    <script src="js/clases.js"></script>
+    <script src="js/main.js"></script>
+
+</body>
+
+</html>
