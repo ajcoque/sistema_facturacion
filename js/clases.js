@@ -135,3 +135,64 @@ class Nevera extends Electrodomestico{
     }
 
 }
+
+class Inventario{
+
+    televisores = [];
+    neveras = [];
+    electrodomesticosComunes = [];
+
+    constructor(){
+        
+    }
+
+    agregarAlInventario(opc, elemento){
+
+        switch (opc) {
+            case "Televisor":
+                this.televisores.push(elemento);
+                console.log(this.televisores);
+                break;
+            case "Nevera":
+                this.neveras.push(elemento);
+                break;
+            case "Comun":
+                this.electrodomesticosComunes.push(elemento);
+                break;
+        }
+    }
+
+    eliminarDelInventario(){
+        switch (opc) {
+            case "Televisor":
+                this.televisores.push(elemento);
+                break;
+            case "Nevera":
+                this.neveras.push(elemento);
+                break;
+            case "Comun":
+                this.electrodomesticosComunes.push(elemento);
+                break;
+        }
+    }
+
+    verificarStockTelevisores(filtro1, filtro2){
+        const result = this.televisores.filter(elemento => elemento.consumo==filtro1 && elemento.procedencia==filtro2);
+        return result.length;
+    }
+
+    verificarStockNeveras(filtro1, filtro2){
+        const result = this.neveras.filter(elemento => elemento.consumo==filtro1 && elemento.procedencia==filtro2);
+        return result.length;
+    }
+
+    verificarStockTelevisores(filtro1, filtro2){
+        const result = this.electrodomesticosComunes.filter(elemento => elemento.consumo==filtro1 && elemento.procedencia==filtro2);
+        return result.length;
+    }
+
+
+    get inventario(){
+        return [...this.televisores, ...this.neveras, ...this.electrodomesticosComunes];
+    }
+}
