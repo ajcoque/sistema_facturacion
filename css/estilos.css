@@ -1,0 +1,38 @@
+* {
+    box-sizing: border-box;
+}
+table {
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+th {
+    padding: 10px;
+}
+td {
+    padding:8px;
+    border:1px solid #ddd;
+}
+input {
+    padding: 6px;
+}
+input[type=number] {
+    text-align: right;
+}
+.text {
+    line-height: 1.8;
+}
+.subtotal, .total, .base, .iva {
+    text-align: right;
+    min-width: 100px;
+}
+.bold {
+    font-weight: bold;
+}
+
+.mostrar{
+    display: block;
+}
+
+.ocultar{
+    display: none;
+}
